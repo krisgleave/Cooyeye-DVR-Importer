@@ -1,0 +1,11 @@
+#!/bin/bash
+set -euo pipefail
+[[ $(uname -m) == arm64 ]] || { echo 'This release requires an Apple Silicon Mac.' >&2; exit 1; }
+[[ $(/usr/bin/stat -f %u /dev/console) -ge 500 ]] || { echo 'Log into your normal desktop account first.' >&2; exit 1; }
+# Preserve any installed app before the package replaces it.
+app='/Applications/Cooyeye DVR Importer.app'
+if [[ -d "$app" ]]; then
+  backup="/Library/Application Support/Cooyeye DVR Importer/Backups/$(date +%Y%m%d-%H%M%S)-$$"
+  mkdir -p "$backup"
+  /usr/bin/ditto "$app" "$backup/Cooyeye DVR Importer.app"
+fi

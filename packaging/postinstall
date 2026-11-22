@@ -1,0 +1,26 @@
+#!/bin/bash
+set -euo pipefail
+uid_number=$(/usr/bin/stat -f %u /dev/console)
+if [[ "$uid_number" -lt 500 ]]; then
+  echo 'Install while a regular user is logged into the desktop.' >&2
+  exit 1
+fi
+label="uk.cooyeye.dvrreader.${uid_number}"
+plist="/Library/LaunchDaemons/${label}.plist"
+support='/Library/Application Support/Cooyeye DVR Importer'
+/bin/launchctl bootout "system/$label" 2>/dev/null || true
+cat > "$plist" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>Label</key><string>$label</string>
+<key>ProgramArguments</key><array><string>$support/cooyeye-reader</string><string>$uid_number</string></array>
+<key>RunAtLoad</key><true/><key>KeepAlive</key><true/>
+<key>StandardErrorPath</key><string>/var/log/cooyeye-reader.log</string>
+</dict></plist>
+EOF
+/usr/sbin/chown root:wheel "$plist" "$support/cooyeye-reader"
+/bin/chmod 0644 "$plist"
+/bin/chmod 0755 "$support/cooyeye-reader"
+/bin/launchctl bootstrap system "$plist"
+/bin/launchctl kickstart -k "system/$label"

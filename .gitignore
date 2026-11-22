@@ -1,0 +1,22 @@
+# macOS / Xcode / SwiftPM
+.DS_Store
+.build/
+.swiftpm/
+DerivedData/
+*.xcuserstate
+*.app/
+*.dSYM/
+*.pkg
+*.dmg
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+# Local backups and credentials
+*.backup
+*.before-cleanup
+.env
+*.p12
+*.mobileprovision
+
+dist/
