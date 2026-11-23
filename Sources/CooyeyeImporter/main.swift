@@ -423,15 +423,6 @@ struct ContentView: View {
                         .tint(model.mode == 1 ? blue : .gray)
                         .disabled(model.busy)
                     if model.busy { ProgressView().controlSize(.small) }
-                    Button {
-                        if model.busy { model.showQuitConfirmation = true }
-                        else { NSApplication.shared.terminate(nil) }
-                    } label: {
-                        Image(systemName: "xmark")
-                    }
-                    .buttonStyle(.bordered)
-                    .help("Close application")
-                    .accessibilityLabel("Close application")
                 }
             }
             .padding(.horizontal, 20).padding(.vertical, 14)
@@ -482,6 +473,9 @@ struct ContentView: View {
                         .buttonStyle(.borderedProminent)
                         .disabled(model.mode == 0 ? model.checked.isEmpty || model.selectedDevice.isEmpty : model.localFiles.isEmpty)
                 }
+                Button("Close") { NSApplication.shared.terminate(nil) }
+                    .buttonStyle(.bordered)
+                    .disabled(model.busy)
             }
             .padding(.horizontal, 20).padding(.vertical, 12)
             .background(panel)
