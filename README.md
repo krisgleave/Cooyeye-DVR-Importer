@@ -6,6 +6,21 @@ Cooyeye DVR Importer is a free macOS application I created to solve a frustratin
 
 This application lets you access those recordings without reformatting the card, extract the original AVI files, and optionally convert them to MP4 for editing or sharing.
 
+
+## Screenshots
+
+### 1. Select your recordings
+
+Choose individual AVI files, select all recordings, enable optional MP4 conversion, and choose your output folder.
+
+![Cooyeye DVR Importer selecting recordings](assets/screenshots/select-recordings.png)
+
+### 2. Import your recordings
+
+Monitor extraction and conversion using the individual file and overall progress indicators.
+
+![Cooyeye DVR Importer importing recordings](assets/screenshots/import-progress.png)
+
 ## Why I created this
 
 I fly analogue FPV using an ImmersionRC RapidFire receiver installed in my iFlight Skyviz goggles.
