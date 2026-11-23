@@ -1,5 +1,18 @@
 # Cooyeye DVR Importer for macOS
 
+<!-- KRIS-SUPPORT-START -->
+
+> ☕ **Support Free FPV Software Development**
+>
+> All my applications are free and open source. If you find
+> them useful, optional contributions help support continued
+> development and improvements.
+>
+> **[☕ Buy Me a Coffee](https://buymeacoffee.com/krisgleave)**
+
+<!-- KRIS-SUPPORT-END -->
+
+
 **Import high-quality analogue FPV recordings from Cooyeye DVR SD cards directly on your Mac.**
 
 Cooyeye DVR Importer is a free macOS application I created to solve a frustrating problem: my Cooyeye DVR records excellent analogue FPV footage to a microSD card, but macOS won't mount the card normally.
